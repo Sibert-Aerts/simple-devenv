@@ -1,0 +1,26 @@
+#!/bin/bash
+source $VENV_PATH/bin/activate
+
+# Function to find valid addon directories
+find_addon_paths() {
+    local search_dirs=("$@")
+    local addons_path=""
+    for dir in "${search_dirs[@]}"; do
+        if [ -d "$dir" ]; then
+            local paths=$(find "$dir" -type f \( -name "__manifest__.py" -o -name "__openerp__.py" \) 2>/dev/null |
+                           xargs -I {} dirname {} |
+                           xargs -I {} dirname {} |
+                           grep -v '/tools/posbox' |
+                           sort -u |
+                           tr '\n' ',' |
+                           sed 's/,$//')
+            if [ -n "$paths" ]; then
+                addons_path="${addons_path}${paths},"
+            fi
+        fi
+    done
+    echo "${addons_path%,}"
+}
+
+ADDONS_PATH=$(find_addon_paths "$ODOO_PATH/addons" "$ENTERPRISE_PATH" "$DESIGN_THEMES_PATH" "$CUSTOM_ADDONS_PATH")
+python -m debugpy --listen 0.0.0.0:5678 $ODOO_PATH/odoo-bin -c $PROJECT_PATH/odoo.conf --addons-path="$ADDONS_PATH" "$@"

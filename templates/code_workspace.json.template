@@ -1,0 +1,40 @@
+{
+    "folders": [
+        {
+            "name": "Project Root",
+            "path": "."
+        },
+        {
+            "name": "Custom Addons",
+            "path": "custom_addons"
+        },
+        {
+            "name": "Odoo",
+            "path": "$ODOO_PATH"
+        },
+        {
+            "name": "Enterprise",
+            "path": "$ENTERPRISE_PATH"
+        },
+        {
+            "name": "Design Themes",
+            "path": "$DESIGN_THEMES_PATH"
+        }
+    ],
+    "settings": {
+        "python.defaultInterpreterPath": "$VENV_PATH/bin/python",
+        "python.analysis.extraPaths": [
+            "$ODOO_PATH",
+            "$ENTERPRISE_PATH",
+            "$DESIGN_THEMES_PATH"
+        ],
+        "[python]": {
+            "editor.formatOnSave": true,
+            "editor.defaultFormatter": "ms-python.python"
+        },
+        "files.exclude": {
+            "**/*.pyc": true,
+            "**/*.pyo": true
+        }
+    }
+}
