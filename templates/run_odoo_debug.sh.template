@@ -1,4 +1,7 @@
 #!/bin/bash
+DATABASE="$PROJECT_NAME"
+CONNECTIONSTRING="postgresql://odoo:odoo@localhost:5432/$DATABASE"
+
 source $VENV_PATH/bin/activate
 
 # Function to find valid addon directories
@@ -22,5 +25,8 @@ find_addon_paths() {
     echo "${addons_path%,}"
 }
 
+# psql $CONNECTIONSTRING -c "UPDATE res_users SET login='admin' WHERE id=2;"
+# psql $CONNECTIONSTRING -c "UPDATE res_users SET password='admin' WHERE id=2;"
+
 ADDONS_PATH=$(find_addon_paths "$ODOO_PATH/addons" "$ENTERPRISE_PATH" "$DESIGN_THEMES_PATH" "$CUSTOM_ADDONS_PATH")
-python -m debugpy --listen 0.0.0.0:5678 $ODOO_PATH/odoo-bin -c $PROJECT_PATH/odoo.conf --addons-path="$ADDONS_PATH" "$@"
+python -m debugpy --listen 0.0.0.0:5678 $ODOO_PATH/odoo-bin -c $PROJECT_PATH/odoo.conf --addons-path="$ADDONS_PATH" "$@" -d $PROJECT_NAME --dev=xml

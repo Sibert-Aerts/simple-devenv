@@ -79,7 +79,8 @@ replace_placeholders() {
         -e "s|\$ENTERPRISE_PATH|$ENTERPRISE_PATH|g" \
         -e "s|\$DESIGN_THEMES_PATH|$DESIGN_THEMES_PATH|g" \
         -e "s|\$CUSTOM_ADDONS_PATH|$CUSTOM_ADDONS_PATH|g" \
-        -e "s|\$USER|$USER|g"
+        -e "s|\$USER|$USER|g" \
+        -e "s/\$PROJECT_NAME|$PROJECT_NAME|g"
 }
 
 # Create run_odoo_debug.sh script
@@ -95,6 +96,7 @@ cat "$SCRIPT_DIR/templates/code_workspace.json.template" | replace_placeholders 
 # Create VSCode launch configuration
 mkdir -p "$PROJECT_PATH/.vscode"
 cat "$SCRIPT_DIR/templates/launch.json.template" | replace_placeholders > "$PROJECT_PATH/.vscode/launch.json"
+cat "$SCRIPT_DIR/templates/tasks.json.template" | replace_placeholders > "$PROJECT_PATH/.vscode/tasks.json"
 
 echo "Odoo development environment for $PROJECT_NAME setup complete!"
 echo "Your custom addons should be placed in: $CUSTOM_ADDONS_PATH"

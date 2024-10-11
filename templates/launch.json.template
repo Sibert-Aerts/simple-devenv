@@ -9,6 +9,8 @@
                 "host": "localhost",
                 "port": 5678
             },
+            // Run the run_odoo_debug.sh script in the project root before attaching
+            "preLaunchTask": "run_odoo_debug.sh",
         }
     ]
 }
