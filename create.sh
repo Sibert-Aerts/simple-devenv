@@ -80,7 +80,7 @@ replace_placeholders() {
         -e "s|\$DESIGN_THEMES_PATH|$DESIGN_THEMES_PATH|g" \
         -e "s|\$CUSTOM_ADDONS_PATH|$CUSTOM_ADDONS_PATH|g" \
         -e "s|\$USER|$USER|g" \
-        -e "s/\$PROJECT_NAME|$PROJECT_NAME|g"
+        -e "s|\$PROJECT_NAME|$PROJECT_NAME|g"
 }
 
 # Create run_odoo_debug.sh script
