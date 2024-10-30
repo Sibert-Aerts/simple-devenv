@@ -97,6 +97,7 @@ cat "$SCRIPT_DIR/templates/code_workspace.json.template" | replace_placeholders 
 mkdir -p "$PROJECT_PATH/.vscode"
 cat "$SCRIPT_DIR/templates/launch.json.template" | replace_placeholders > "$PROJECT_PATH/.vscode/launch.json"
 cat "$SCRIPT_DIR/templates/tasks.json.template" | replace_placeholders > "$PROJECT_PATH/.vscode/tasks.json"
+cat "$SCRIPT_DIR/templates/shortcuts.json.template" | replace_placeholders > "$PROJECT_PATH/.vscode/shortcuts.json"
 
 echo "Odoo development environment for $PROJECT_NAME setup complete!"
 echo "Your custom addons should be placed in: $CUSTOM_ADDONS_PATH"

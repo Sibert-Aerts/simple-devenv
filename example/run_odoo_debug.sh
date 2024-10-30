@@ -75,6 +75,5 @@ fi
     -d "${DATABASE}" \
     --dev=xml,qweb \
     --log-level=debug \
-    -u bzb_base,abs_report_builder \
     "$@"
 

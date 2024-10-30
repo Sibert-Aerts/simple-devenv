@@ -1,21 +1,4 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "run_odoo_debug.sh",
-            "type": "shell",
-            "command": "bash",
-            "args": [
-                "run_odoo_debug.sh"
-            ],
-            "problemMatcher": "$python",
-            "isBackground": true,
-            "options": {
-                "cwd": "${workspaceFolder}"
-            }
-        }
-    ]
-}{
   "version": "2.0.0",
   "tasks": [
     {

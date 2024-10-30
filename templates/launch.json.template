@@ -6,7 +6,7 @@
             "type": "debugpy",
             "request": "launch",
             "preLaunchTask": "update_addons_path",
-            "program": "/opt/odoos/$ODOO_VERSION/odoo/odoo-bin",
+            "program": "$ODOO_PATH/odoo/odoo-bin",
             "args": [
                 "-c",
                 "${workspaceFolder}/odoo.conf",
