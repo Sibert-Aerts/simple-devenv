@@ -7,12 +7,6 @@
             "request": "launch",
             "preLaunchTask": "update_addons_path",
             "program": "$ODOO_PATH/odoo-bin",
-            "args": [
-                "-c",
-                "${workspaceFolder}/odoo.conf",
-                "--dev=xml,qweb",
-                "--log-level=debug"
-            ],
             "pathMappings": [
                 {
                     "localRoot": "${workspaceFolder}",
