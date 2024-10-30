@@ -1,0 +1,119 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "update_addons_path",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "update_addons_path.sh"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Stop Odoo Server",
+      "type": "shell",
+      "command": "sudo lsof -t -i:8069 | xargs -r kill -9",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "run_odoo_debug.sh",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "run_odoo_debug.sh"
+      ],
+      "problemMatcher": "$python",
+      "isBackground": true,
+      "runOptions": {
+        "instanceLimit": 1,
+        "runOn": "default",
+        "reevaluateOnRerun": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "Update All Odoo Modules",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "run_odoo_debug.sh",
+        "-u",
+        "all"
+      ],
+      "problemMatcher": "$python",
+      "isBackground": true,
+      "runOptions": {
+        "instanceLimit": 1,
+        "runOn": "default",
+        "reevaluateOnRerun": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "Update Specific Module",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "run_odoo_debug.sh",
+        "-u",
+        "${input:moduleToUpdate}"
+      ],
+      "problemMatcher": "$python",
+      "isBackground": true,
+      "runOptions": {
+        "instanceLimit": 1,
+        "runOn": "default",
+        "reevaluateOnRerun": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOn": [
+        "update_options"
+      ]
+    },
+    {
+      "label": "update_options",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "list_modules.sh"
+      ],
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "moduleToUpdate",
+      "type": "pickString",
+      "description": "Select the Odoo module to update",
+      "options": [
+        "bzb_base",
+        "web_widget_x2many_2d_matrix",
+        "abs_webform_contact",
+        "abs_webform",
+        "abs_custom_price_calculation",
+        "abs_chatter_only_mention_internal",
+        "abs_mail_debrand",
+        "abs_mail_post_access_is_read",
+        "abs_chatter_notes_dont_subscribe",
+        "chatter_button_external_warning",
+        "abs_sale_subscription_fixed_period",
+        "abs_report_builder",
+        "abs_contacts_ux"
+      ]
+    }
+  ]
+}

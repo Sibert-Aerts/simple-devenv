@@ -1,0 +1,26 @@
+[
+    {
+        "key": "ctrl+shift+k",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Stop Odoo Server"
+    },
+    {
+        "key": "ctrl+shift+r",
+        "command": "workbench.action.tasks.runTask",
+        "args": "run_odoo_debug.sh"
+    },
+    {
+        "key": "ctrl+shift+d",
+        "command": "workbench.action.debug.start"
+    },
+    {
+        "key": "ctrl+shift+u",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Update All Odoo Modules"
+    },
+    {
+        "key": "ctrl+shift+m",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Update Specific Module"
+    }
+]

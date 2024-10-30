@@ -1,0 +1,45 @@
+{
+    "folders": [
+        {
+            "name": "Project Root",
+            "path": "."
+        },
+        {
+            "name": "Custom Addons",
+            "path": "custom_addons"
+        },
+        {
+            "name": "Odoo",
+            "path": "/opt/odoos/17.0/odoo"
+        },
+        {
+            "name": "Enterprise",
+            "path": "/opt/odoos/17.0/enterprise"
+        },
+        {
+            "name": "Design Themes",
+            "path": "/opt/odoos/17.0/design-themes"
+        }
+    ],
+    "settings": {
+        "python.defaultInterpreterPath": "/home/vincent/odoo_projects/bzbfedafin/venv/bin/python",
+        "python.analysis.extraPaths": [
+            "/opt/odoos/17.0/odoo",
+            "/opt/odoos/17.0/enterprise",
+            "/opt/odoos/17.0/design-themes"
+        ],
+        "[python]": {
+            "editor.formatOnSave": true,
+            "editor.defaultFormatter": "charliermarsh.ruff"
+        },
+        "files.exclude": {
+            "**/*.pyc": true,
+            "**/*.pyo": true,
+            "venv": true,
+            "**/__pycache__": true
+        },
+        "python.languageServer": "None",
+        "ruff.lineLength": 120,
+        "python.analysis.autoFormatStrings": true,
+    }
+}

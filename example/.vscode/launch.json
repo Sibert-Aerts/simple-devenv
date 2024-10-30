@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Odoo",
+            "type": "debugpy",
+            "request": "launch",
+            "preLaunchTask": "update_addons_path",
+            "program": "/opt/odoos/17.0/odoo/odoo-bin",
+            "args": [
+                "-c",
+                "${workspaceFolder}/odoo.conf",
+                "--dev=xml,qweb",
+                "--log-level=debug"
+            ],
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "${workspaceFolder}"
+                }
+            ],
+            "justMyCode": false,
+            "presentation": {
+                "hidden": false,
+                "group": "Odoo",
+                "order": 1
+            },
+            "console": "externalTerminal",
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "python.analysis.typeCheckingMode": "off",
+    "editor.formatOnSave": true,
+    "files.watcherExclude": {
+        "**/.git/**": true,
+        "**/node_modules/**": true,
+        "**/venv/**": true
+    },
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always",
+            "source.organizeImports.reorder-python-imports": "always",
+            "source.organizeImports.ruff": "always",
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+    },
+    "[xml]": {
+        "editor.autoClosingBrackets": "never",
+        "files.trimFinalNewlines": true,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "mikeburgh.xml-format",
+    }
+}
