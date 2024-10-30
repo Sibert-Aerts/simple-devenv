@@ -57,8 +57,8 @@ if [ -z "$ADDONS_PATH" ]; then
 fi
 
 # Check if Odoo binary exists
-if [ ! -f "${ODOO_PATH}/odoo/odoo-bin" ]; then
-    echo "Error: Odoo binary not found at ${ODOO_PATH}/odoo/odoo-bin"
+if [ ! -f "${ODOO_PATH}/odoo-bin" ]; then
+    echo "Error: Odoo binary not found at ${ODOO_PATH}/odoo-bin"
     exit 1
 fi
 
@@ -69,7 +69,7 @@ if [ -n "${MODULE_TO_UPDATE}" ] && [[ ! "$*" =~ "-u" ]]; then
     UPDATE_ARG="-u ${MODULE_TO_UPDATE}"
 fi
 
-"${ODOO_PATH}/odoo/odoo-bin" \
+"${ODOO_PATH}/odoo-bin" \
     -c "${CONFIG_PATH}" \
     ${UPDATE_ARG} \
     -d "${DATABASE}" \
