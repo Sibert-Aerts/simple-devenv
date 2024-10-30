@@ -11,3 +11,13 @@ workers = 0
 max_cron_threads = 0
 log_level = debug
 log_handler = [':DEBUG']
+
+# Development settings
+dev_mode = True
+auto_reload = True
+without_demo = False
+test_enable = True
+test_file = False
+test_tags = False
+screencasts = False
+screenshots = /tmp/odoo_tests

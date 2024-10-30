@@ -55,12 +55,39 @@ mkdir -p "$PROJECT_PATH"
 "python$PYTHON_VERSION" -m venv "$VENV_PATH"
 source "$VENV_PATH/bin/activate"
 
+# Set Git protocol (ssh or https)
+GIT_PROTOCOL="${GIT_PROTOCOL:-ssh}"
+
+# Define repository URLs based on protocol
+if [ "$GIT_PROTOCOL" = "ssh" ]; then
+    ODOO_REPO="git@github.com:odoo/odoo.git"
+    ENTERPRISE_REPO="git@github.com:odoo/enterprise.git"
+    DESIGN_THEMES_REPO="git@github.com:odoo/design-themes.git"
+else
+    ODOO_REPO="https://github.com/odoo/odoo.git"
+    ENTERPRISE_REPO="https://github.com/odoo/enterprise.git"
+    DESIGN_THEMES_REPO="https://github.com/odoo/design-themes.git"
+fi
+
 # Clone or update Odoo repositories
 sudo mkdir -p "$ODOO_BASE_PATH"
 sudo chown "$USER:$USER" "$ODOO_BASE_PATH"
-clone_or_pull "git@github.com:odoo/odoo.git" "$ODOO_PATH" "$ODOO_VERSION"
-clone_or_pull "git@github.com:odoo/enterprise.git" "$ENTERPRISE_PATH" "$ODOO_VERSION"
-clone_or_pull "git@github.com:odoo/design-themes.git" "$DESIGN_THEMES_PATH" "$ODOO_VERSION"
+
+echo "Cloning/updating Odoo repositories..."
+if ! clone_or_pull "$ODOO_REPO" "$ODOO_PATH" "$ODOO_VERSION"; then
+    echo "Failed to clone/update Odoo repository. Please check your credentials and connectivity."
+    exit 1
+fi
+
+if ! clone_or_pull "$ENTERPRISE_REPO" "$ENTERPRISE_PATH" "$ODOO_VERSION"; then
+    echo "Failed to clone/update Enterprise repository. Please check your credentials and connectivity."
+    exit 1
+fi
+
+if ! clone_or_pull "$DESIGN_THEMES_REPO" "$DESIGN_THEMES_PATH" "$ODOO_VERSION"; then
+    echo "Failed to clone/update Design Themes repository. Please check your credentials and connectivity."
+    exit 1
+fi
 
 # Install Odoo requirements using UV
 uv pip install -r "$ODOO_PATH/requirements.txt"
