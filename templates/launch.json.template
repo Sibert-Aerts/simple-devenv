@@ -4,13 +4,28 @@
         {
             "name": "Python: Odoo",
             "type": "debugpy",
-            "request": "attach",
-            "connect": {
-                "host": "localhost",
-                "port": 5678
+            "request": "launch",
+            "preLaunchTask": "update_addons_path",
+            "program": "/opt/odoos/$ODOO_VERSION/odoo/odoo-bin",
+            "args": [
+                "-c",
+                "${workspaceFolder}/odoo.conf",
+                "--dev=xml,qweb",
+                "--log-level=debug"
+            ],
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "${workspaceFolder}"
+                }
+            ],
+            "justMyCode": false,
+            "presentation": {
+                "hidden": false,
+                "group": "Odoo",
+                "order": 1
             },
-            // Run the run_odoo_debug.sh script in the project root before attaching
-            "preLaunchTask": "run_odoo_debug.sh",
+            "console": "externalTerminal"
         }
     ]
 }

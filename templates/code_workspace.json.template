@@ -10,31 +10,36 @@
         },
         {
             "name": "Odoo",
-            "path": "$ODOO_PATH"
+            "path": "/opt/odoos/$ODOO_VERSION/odoo"
         },
         {
             "name": "Enterprise",
-            "path": "$ENTERPRISE_PATH"
+            "path": "/opt/odoos/$ODOO_VERSION/enterprise"
         },
         {
             "name": "Design Themes",
-            "path": "$DESIGN_THEMES_PATH"
+            "path": "/opt/odoos/$ODOO_VERSION/design-themes"
         }
     ],
     "settings": {
         "python.defaultInterpreterPath": "$VENV_PATH/bin/python",
         "python.analysis.extraPaths": [
-            "$ODOO_PATH",
-            "$ENTERPRISE_PATH",
-            "$DESIGN_THEMES_PATH"
+            "/opt/odoos/$ODOO_VERSION/odoo",
+            "/opt/odoos/$ODOO_VERSION/enterprise",
+            "/opt/odoos/$ODOO_VERSION/design-themes"
         ],
         "[python]": {
             "editor.formatOnSave": true,
-            "editor.defaultFormatter": "ms-python.python"
+            "editor.defaultFormatter": "charliermarsh.ruff"
         },
         "files.exclude": {
             "**/*.pyc": true,
-            "**/*.pyo": true
-        }
+            "**/*.pyo": true,
+            "venv": true,
+            "**/__pycache__": true
+        },
+        "python.languageServer": "None",
+        "ruff.lineLength": 120,
+        "python.analysis.autoFormatStrings": true
     }
 }
