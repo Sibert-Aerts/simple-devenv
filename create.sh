@@ -128,6 +128,12 @@ cat "$SCRIPT_DIR/templates/launch.json.template" | replace_placeholders > "$PROJ
 cat "$SCRIPT_DIR/templates/tasks.json.template" | replace_placeholders > "$PROJECT_PATH/.vscode/tasks.json"
 cat "$SCRIPT_DIR/templates/shortcuts.json.template" | replace_placeholders > "$PROJECT_PATH/.vscode/shortcuts.json"
 
+# Create utility scripts
+cat "$SCRIPT_DIR/templates/update_addons_path.sh.template" | replace_placeholders > "$PROJECT_PATH/update_addons_path.sh"
+cat "$SCRIPT_DIR/templates/list_modules.sh.template" | replace_placeholders > "$PROJECT_PATH/list_modules.sh"
+chmod +x "$PROJECT_PATH/update_addons_path.sh"
+chmod +x "$PROJECT_PATH/list_modules.sh"
+
 echo "Odoo development environment for $PROJECT_NAME setup complete!"
 echo "Your custom addons should be placed in: $CUSTOM_ADDONS_PATH"
 echo "To open the project in VSCode, use: code $PROJECT_PATH/$PROJECT_NAME.code-workspace"
