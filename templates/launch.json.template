@@ -25,7 +25,14 @@
                 "group": "Odoo",
                 "order": 1
             },
-            "console": "externalTerminal"
+            "args": [
+                "-c",
+                "${workspaceFolder}/odoo.conf",
+                "--dev=xml,qweb",
+                "--log-level=debug",
+                "-d",
+                "$PROJECT_NAME"
+            ]
         }
     ]
 }
