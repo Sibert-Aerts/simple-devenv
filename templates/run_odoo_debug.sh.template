@@ -4,7 +4,7 @@ set -e
 # Configuration
 DATABASE="$PROJECT_NAME"
 ODOO_VERSION="$ODOO_VERSION"
-ODOO_PATH="/opt/odoos/${ODOO_VERSION}"
+ODOO_PATH="/opt/odoos/${ODOO_VERSION}/odoo"
 VENV_PATH="$VENV_PATH"
 CONFIG_PATH="$PROJECT_PATH/odoo.conf"
 MODULE_TO_UPDATE="$DEFAULT_MODULE"
@@ -66,7 +66,7 @@ fi
 echo "Starting Odoo in debug mode..."
 UPDATE_ARG=""
 if [ -n "${MODULE_TO_UPDATE}" ] && [[ ! "$*" =~ "-u" ]]; then
-    UPDATE_ARG="-u ${MODULE_TO_UPDATE}"
+    UPDATE_ARG="-u ${MODULE_TO_UPDATE} --no-http --stop-after-init"
 fi
 
 "${ODOO_PATH}/odoo-bin" \
