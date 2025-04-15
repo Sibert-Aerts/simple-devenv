@@ -38,7 +38,6 @@
             "venv": true,
             "**/__pycache__": true
         },
-        "python.languageServer": "None",
         "ruff.lineLength": 120,
         "python.analysis.autoFormatStrings": true
     }
